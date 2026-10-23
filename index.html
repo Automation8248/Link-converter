@@ -2,109 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub API Link Converter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#111827">
+    <title>GitHub Toolkit — Automation8248</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom scrollbar for better aesthetics */
-        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #1f2937; }
         ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; }
+
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        /* Fade-in for cards */
+        .fade-in { animation: fadeIn 0.35s ease-out both; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-1 { animation-delay: 0.05s; }
+        .fade-in-2 { animation-delay: 0.15s; }
+
+        /* Glow hover */
+        .tool-card {
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        .tool-card:hover {
+            transform: translateY(-3px);
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+        }
+        .tool-card:active {
+            transform: translateY(-1px);
+        }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-4 antialiased">
+<body class="bg-gray-900 text-gray-100 min-h-screen flex items-center justify-center p-3 sm:p-4 antialiased">
 
-    <div class="w-full max-w-md bg-gray-800 rounded-2xl shadow-xl border border-gray-700 p-6 sm:p-8">
+    <div class="w-full max-w-md">
+
         <!-- Header -->
-        <div class="mb-6 text-center">
-            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-900/50 text-blue-400 mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+        <div class="text-center mb-6 fade-in">
+            <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-700 text-white mb-4 shadow-lg shadow-blue-900/40">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 sm:h-8 sm:w-8" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
             </div>
-            <h1 class="text-2xl font-bold text-white tracking-tight">API Link Converter</h1>
-            <p class="text-sm text-gray-400 mt-2">Convert GitHub workflow links to API dispatch URLs</p>
+            <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">GitHub Toolkit</h1>
+            <p class="text-sm text-gray-400 mt-2 leading-relaxed max-w-xs mx-auto">
+                Link converter & image hosting tools.<br>Fast, free, auto-cleanup.
+            </p>
         </div>
 
-        <!-- Input Section -->
-        <div class="space-y-4">
-            <div>
-                <label for="inputUrl" class="block text-sm font-medium text-gray-300 mb-1">GitHub Workflow URL</label>
-                <input type="text" id="inputUrl" placeholder="https://github.com/.../.github/workflows/file.yml" 
-                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-white text-sm outline-none transition-all placeholder-gray-600"
-                    autocomplete="off">
-                <p id="errorText" class="text-red-400 text-xs mt-2 hidden">Invalid URL format. Make sure it points to a .github/workflows/.yml file.</p>
-            </div>
+        <!-- Tools Grid -->
+        <div class="space-y-3 sm:space-y-4">
 
-            <button onclick="convertUrl()" 
-                class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-3 px-4 rounded-lg transition-colors focus:ring-4 focus:ring-blue-900 focus:outline-none flex items-center justify-center">
-                <span>Convert Link</span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            <!-- Tool 1: Link Converter -->
+            <a href="linkconvert.html"
+               class="tool-card fade-in fade-in-1 block bg-gray-800 rounded-2xl border border-gray-700 p-5 shadow-xl">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-900/50 text-blue-400 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <h2 class="text-base font-semibold text-white">Link Converter</h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 flex-shrink-0" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-1 leading-relaxed">
+                            Convert GitHub workflow URLs to API dispatch endpoints instantly.
+                        </p>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tool 2: Image Upload -->
+            <a href="upload.html"
+               class="tool-card fade-in fade-in-2 block bg-gray-800 rounded-2xl border border-gray-700 p-5 shadow-xl">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-purple-900/50 text-purple-400 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center justify-between gap-2">
+                            <h2 class="text-base font-semibold text-white">Image Upload</h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 flex-shrink-0" fill="none"
+                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-1 leading-relaxed">
+                            Upload images to GitHub, get direct links. Auto-delete in 48h.
+                        </p>
+                        <span class="inline-flex items-center gap-1 mt-2 text-[11px] font-medium text-amber-400 bg-amber-900/20 px-2 py-0.5 rounded">
+                            ⏰ 48h auto-cleanup
+                        </span>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-6 text-center fade-in fade-in-2">
+            <p class="text-xs text-gray-500">
+                Built with ❤️ using GitHub Pages
+            </p>
+            <a href="https://github.com/Automation8248/Link-converter"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 mt-2 text-xs text-gray-400 hover:text-blue-400 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd"
+                          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                          clip-rule="evenodd" />
                 </svg>
-            </button>
+                View on GitHub
+            </a>
         </div>
 
-        <!-- Output Section (Hidden by default) -->
-        <div id="resultBox" class="mt-6 hidden">
-            <label class="block text-sm font-medium text-gray-300 mb-1">API Dispatch URL</label>
-            <div class="relative">
-                <input type="text" id="outputUrl" readonly 
-                    class="w-full px-4 py-3 pr-24 bg-gray-900 border border-gray-700 rounded-lg text-green-400 text-sm outline-none">
-                <button id="copyBtn" onclick="copyToClipboard()" 
-                    class="absolute right-1 top-1 bottom-1 bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium px-4 rounded-md transition-colors flex items-center">
-                    Copy
-                </button>
-            </div>
-        </div>
     </div>
 
     <script>
-        function convertUrl() {
-            const input = document.getElementById('inputUrl').value.trim();
-            const resultBox = document.getElementById('resultBox');
-            const outputUrl = document.getElementById('outputUrl');
-            const errorText = document.getElementById('errorText');
-
-            // Regex banaya gaya hai owner, repo aur filename extract karne ke liye
-            const regex = /^https:\/\/github\.com\/([^\/]+)\/([^\/]+)\/blob\/[^\/]+\/\.github\/workflows\/([^\/]+\.yml)$/;
-            const match = input.match(regex);
-
-            if (match) {
-                const owner = match[1];
-                const repo = match[2];
-                const file = match[3];
-                
-                // Naya API URL format generate karna
-                const apiUrl = `https://api.github.com/repos/${owner}/${repo}/actions/workflows/${file}/dispatches`;
-
-                outputUrl.value = apiUrl;
-                resultBox.classList.remove('hidden');
-                errorText.classList.add('hidden');
-            } else {
-                errorText.classList.remove('hidden');
-                resultBox.classList.add('hidden');
-            }
-        }
-
-        function copyToClipboard() {
-            const outputUrl = document.getElementById('outputUrl');
-            const copyBtn = document.getElementById('copyBtn');
-
-            outputUrl.select();
-            outputUrl.setSelectionRange(0, 99999); // Mobile devices ke liye
-            navigator.clipboard.writeText(outputUrl.value).then(() => {
-                copyBtn.innerText = 'Copied!';
-                copyBtn.classList.replace('bg-gray-700', 'bg-green-600');
-                copyBtn.classList.replace('hover:bg-gray-600', 'hover:bg-green-500');
-                
-                setTimeout(() => {
-                    copyBtn.innerText = 'Copy';
-                    copyBtn.classList.replace('bg-green-600', 'bg-gray-700');
-                    copyBtn.classList.replace('hover:bg-green-500', 'hover:bg-gray-600');
-                }, 2000);
-            });
-        }
+        // Optional: keyboard shortcut — 1 = converter, 2 = upload
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '1') window.location.href = 'linkconvert.html';
+            if (e.key === '2') window.location.href = 'upload.html';
+        });
     </script>
 </body>
 </html>
